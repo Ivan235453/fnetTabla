@@ -1,0 +1,68 @@
+
+<div class="container-fluid bg-white bg-gradient shadow mb-2 head ">
+    <div class="row " >
+        <div class="col-sm-2 bg-primary bg-gradient bg-opacity-75 rounded-bottom text-white text-center pb-1 pt-1">
+            <div class="text-sm col "><h4 class="text-sm pt-2 pb-2">Actores</h4></div>
+        </div>
+        <div class="options col-sm-3 align-self-center text-center " >
+            <div class="">
+                <input class="form form-control shadow-sm " type="search"  name="search" id="" placeholder="Buscar por Nombre" (keyup)="actorDataFiltered()" [(ngModel)]="look" #search>
+            </div>
+        </div>
+        <div class="options col-sm-3 align-self-center text-center" >
+            <div class="d-flex justify-content-between">
+                <button class="shadow-sm rounded-circle btn btn-light border" routerLink="add"><i class='fa fa-plus'></i></button>
+                <button class="shadow-sm rounded-circle btn btn-light border" routerLink="edit"><i class="fas fa-edit"></i></button>
+                <button class="shadow-sm rounded-circle btn btn-light border" routerLink="remove"><i class="fa fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+    <div class="container">
+        <div class="container card shadow">
+        
+            <div class="container tableFrame">
+        <table class="table table-bordered table-hover">
+            <thead class="">
+            <tr class="position-sticky sticky-header shadow-sm">
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Activo</th>
+    
+            </tr>
+        </thead>
+        
+            <tr *ngFor="let i of dataFiltered" (click)="clicked(i)" class="actorEntry" [ngClass]="{
+                'alert alert-danger table-danger': i.actor_status != 1,
+                'bg-primary bg-gradient bg-opacity-50 rounded table-primary': indexClicked == i.actor_id
+            }" >
+                <th>{{i.actor_id}}</th>
+                <th>{{i.first_name}}</th>
+                <th>{{i.last_name}}</th>
+                <th *ngIf="i.actor_status==1;else elseTemplate"> SI</th>
+                <ng-template #elseTemplate>
+                    <th>NO</th>
+                </ng-template>
+            </tr>
+     
+
+        </table>
+        </div>
+        </div>
+
+</div>
+
+<!--
+    <table class="table table-striped" >
+    <tbody class="">
+        <tr *ngFor="let i of actores">
+            <td>{{i.actor_id}}</td>
+            <td>{{i.first_name}}</td>
+            <td>{{i.last_name}}</td>
+        </tr>
+    </tbody>
+</table>
+-->

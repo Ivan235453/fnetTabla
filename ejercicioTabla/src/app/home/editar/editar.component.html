@@ -1,0 +1,38 @@
+<div class="container ">
+    
+    <h3 class="text-center">Editar Actor</h3>
+   
+    <div class="card p-5">
+        <div>        
+            <button class="btn btn-secondary" routerLink="/"><i class="fa fa-arrow-left" aria-hidden="true"></i>Volver</button>
+           
+        </div>
+        <div class="align-self-center">
+            <p> Editar {{actorEditCopy.first_name}} {{actorEditCopy.last_name}}</p>
+        </div>
+      
+        <div class="align-self-center">
+        <form  (ngSubmit)="editActor()" class="row form-control" #formInsert="ngForm">
+            
+            <div class="pt-1 form-group">
+                <label for="" class="m-2">Nombre: </label>
+                <input type="text" value="" class="form-control" name="first_name" [(ngModel)]="actorEdit.first_name" (ngModelChange)="actorEdit.first_name = $event.toUpperCase()" required #firstname="ngModel">
+                <div class="alert alert-danger mt-1 p-1 m-0 container" [hidden]="firstname.valid || firstname.pristine" > <i class="fa fa-exclamation-triangle"></i>Nombre invalido</div>
+            </div>
+            <div class="pt-1 form-group">
+                <label for="" class="m-2 col">Apellido: </label>
+                <input type="text" value="" class="col-8 form-control" name="last_name" [(ngModel)]="actorEdit.last_name" (ngModelChange)="actorEdit.last_name = $event.toUpperCase()" required #lastname="ngModel">
+                <div class="alert alert-danger mt-1 p-1 m-0 container" [hidden]="lastname.valid || lastname.pristine" > <i class="fa fa-exclamation-triangle"></i>Apellido invalido</div>
+
+            </div>
+            <div class="text-center mt-3">
+            
+                <button class="btn btn-primary mt-3" [disabled]="formInsert.invalid||(firstname.value===actorEditCopy.first_name&&lastname.value===actorEditCopy.last_name)">Editar</button>
+            </div>
+                
+        </form>
+        
+        </div>
+    </div>
+
+</div>

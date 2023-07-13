@@ -1,0 +1,35 @@
+
+.actorEntry{
+    font-size: .9em;
+    transition: all .15s linear; 
+    
+}
+
+
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+}
+
+.tableFrame{
+    height: 25em;
+    overflow-y:scroll;
+}
+
+.actorEntry:hover{
+background-color:#61adf473;
+}
+.actorEntry:active{
+    background-color:#4a7ff8bc;
+    }
+
+    
+
+      table, th, td {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      th, td {
+        padding:0.7% 0 0.7% 0 ;
+      }
