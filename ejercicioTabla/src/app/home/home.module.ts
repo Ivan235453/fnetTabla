@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { TablasComponent } from './tablas/tablas.component';
@@ -21,7 +22,8 @@ import { RemoverComponent } from './remover/remover.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
     
   ]
 })

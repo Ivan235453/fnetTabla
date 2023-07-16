@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { first } from 'rxjs';
 import { QueriesServiceService } from 'src/app/queries-service.service';
-import Swal from 'sweetalert2';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { RemoverComponent } from '../remover/remover.component';
 
 
 @Component({
@@ -31,7 +31,8 @@ export class TablasComponent {
     console.log(this.clicked);
   }
 
-  constructor(private service: QueriesServiceService) {}
+
+  constructor(private service: QueriesServiceService, public dialog:MatDialog) {}
   indexClicked=0;
 
   clicked(member:any){
@@ -48,22 +49,31 @@ export class TablasComponent {
      });
     }
 
-    edit(){
-      console.log("wtflol")
-      Swal.fire({
-        title: 'Do you want to save the changes?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Save',
-        denyButtonText: `Don't save`,
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          Swal.fire('Saved!', '', 'success')
-        } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info')
-        }
-      })
+    dialogRef: MatDialogRef<RemoverComponent> | undefined;
+
+    removeModal(){
+      if(this.indexClicked!=0){
+
+        this.dialogRef=this.dialog.open(RemoverComponent, {
+          
+          width: '50%', // Ancho del modal
+          height: '50%', // Altura del modal
+          autoFocus: true, // Enfocar automáticamente el primer elemento dentro del modal
+        });
+
+        this.dialogRef.afterClosed().subscribe(result => {
+          this.ngOnInit()
+            // console.log('Modal cerrado:', result); // Resultado enviado desde el modal si lo cierras con 'this.dialogRef.close(resultado)'
+        });
+
+      } 
     }
 
-}
+
+    }
+
+
+
+
+
+
